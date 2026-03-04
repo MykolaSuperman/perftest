@@ -20,14 +20,14 @@ class MetricsCollector:
     # Hardcoded PromQL queries for streaming and system metrics
     QUERIES = {
         # Streaming metrics
-        "Bitrate (Mbps)": 'avg(streaming{__name__="bitrate_mbps"})',
-        "RTT (ms)": 'avg(streaming{__name__="rtt_ms"})',
-        "Quality": 'avg(streaming{__name__="quality"})',
-        "Score": 'avg(streaming{__name__="score"})',
+        "Bitrate (Mbps)": 'streaming_bitrate_mbps',
+        "RTT (ms)": 'streaming_rtt_ms',
+        "Quality": 'streaming_quality',
+        "Score": 'streaming_score',
         # System metrics
-        "CPU (%)": 'avg(system{__name__="cpu_percent"})',
-        "RAM (%)": 'avg(system{__name__="ram_percent"})',
-        "RAM (MB)": 'avg(system{__name__="ram_mb"})',
+        "CPU (%)": 'system_cpu_percent',
+        "RAM (%)": 'system_ram_percent',
+        "RAM (MB)": 'system_ram_mb',
     }
 
     def __init__(self, config: VictoriaMetricsConfig):
