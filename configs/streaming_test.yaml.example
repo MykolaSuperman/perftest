@@ -1,0 +1,35 @@
+name: "Streaming Performance Test"
+description: "Test WebRTC streaming with cameras"
+
+# Test service endpoint
+test_endpoint_url: "http://localhost:8080/v1/test/run"
+
+# Start request configuration
+start_request:
+  duration_seconds: 60
+  config:
+    streamer:
+      stream_server_url: "https://your-sfu-server.com"
+      stream_server_key: "your_livekit_key"
+      stream_server_secret: "your_livekit_secret"
+    recorder:
+      video_chunk_duration_seconds: 10
+  cameras:
+    - camera_id: 1
+      rtsp_url: "rtsp://username:password@camera-ip:port/stream-path"
+      room_name: "test-room-1"
+      stream: true
+      record: false
+      audio: false
+      width: 1920
+      height: 1080
+
+# Victoria Metrics configuration
+victoria_metrics:
+  url: "http://localhost:8428"
+  timeout: 10
+
+# Output configuration
+output:
+  format: "console"
+  show_summary: true

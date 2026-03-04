@@ -1,0 +1,45 @@
+[project]
+name = "perftest"
+version = "0.1.0"
+description = "Performance testing tool with Victoria Metrics integration"
+requires-python = ">=3.11"
+authors = [
+    {name = "Performance Testing Team"}
+]
+
+dependencies = [
+    "httpx>=0.27.0",
+    "pydantic>=2.11.0",
+    "pyyaml>=6.0",
+    "rich>=13.7.0",
+    "click>=8.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.6.0",
+    "mypy>=1.11.0",
+]
+
+[project.scripts]
+perftest = "perftest.cli:run_test"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = []
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
